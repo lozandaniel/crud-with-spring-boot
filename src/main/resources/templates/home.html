@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="/fields/css/style-home.css">
+</head>
+<body>
+    <header>
+        <h1>Lista de productos</h1>
+        <p>Para agregar un producto <a href="/products/add">Click Aquí</a></p>
+    </header>
+
+    <main>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Delete</th>
+                <th>Edit</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="product : ${allProducts}">
+                <td th:text="${product.id}"></td>
+                <td th:text="${product.name}" style="font-weight:700;"></td>
+                <td th:text="${product.description}"></td>
+                <td th:text="${product.category}"></td>
+                <td th:text="${product.quantity}"></td>
+                <td th:text="${product.price}"></td>
+                <td>
+                    <form th:action="@{'/products/' + ${product.id}}" method="post">
+                        <button type="submit" style="border: none; background: none; padding: 0; cursor:pointer;">
+                            <img src="/fields/icon-delete.svg" alt="Delete">
+                        </button>
+                    </form>
+                </td>
+                <td>
+                    <a th:href="@{'/products/edit/' + ${product.id}}">
+                        <img src="/fields/icon-edit.svg" alt="Edit">
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

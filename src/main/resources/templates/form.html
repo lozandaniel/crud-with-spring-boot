@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Save Product</title>
+    <link rel="stylesheet" href="/fields/css/form.css">
+</head>
+<body>
+<header>
+    <h1>Agrega tus productos</h1>
+    <p>Lista de productos <a href="/products">Aquí</a></p>
+</header>
+
+<main>
+    <form action="/products/add" method="post" th:object="${saveProduct}">
+        <label for="name">Name
+            <input type="text" id="name" th:field="*{name}" placeholder="Name" REQUIRED>
+        </label>
+        <label for="description">Description
+            <input type="text" id="description" th:field="*{description}" placeholder="Description">
+        </label>
+        <label for="category">Category:
+            <input type="text" id="category" th:field="*{category}" placeholder="Category product" required>
+        </label>
+        <label for="quantity">Quantity:
+            <input type="number" id="quantity" th:field="*{quantity}" required value="1">
+        </label>
+        <label for="price">Price
+            <input type="number" id="price" th:field="*{price}" placeholder="Price">
+        </label>
+        <button type="submit">Agregar Producto</button>
+
+    </form>
+</main>
+</body>
+</html>
