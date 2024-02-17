@@ -1,6 +1,7 @@
 package com.example.CrudProductModule.services;
 
 import com.example.CrudProductModule.models.Product;
+import com.example.CrudProductModule.models.Provider;
 
 import java.util.List;
 import java.util.Optional;
@@ -9,6 +10,8 @@ public interface ProductService {
 
     // Método para obtener todos los productos.
     List<Product> getAllProducts();
+
+    List<Provider> getAllProviders();
 
     // Método para buscar un producto por su ID.
     Optional<Product> findProductById(Long id);

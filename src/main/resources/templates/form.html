@@ -13,11 +13,16 @@
 
 <main>
     <form action="/products/add" method="post" th:object="${saveProduct}">
-        <label for="name">Name
+        <label for="name">Name:
             <input type="text" id="name" th:field="*{name}" placeholder="Name" REQUIRED>
         </label>
-        <label for="description">Description
-            <input type="text" id="description" th:field="*{description}" placeholder="Description">
+        <label>Name provider:
+            <select id="provider" name="provider.id">
+                <option th:each="provider : ${providers}" th:text="${provider.name}" th:value="${provider.id}"></option>
+            </select>
+        </label>
+        <label for="description">Description:
+            <textarea rows="7" id="description" th:field="*{description}" placeholder="Escribe una descripción detallada..."></textarea>
         </label>
         <label for="category">Category:
             <input type="text" id="category" th:field="*{category}" placeholder="Category product" required>

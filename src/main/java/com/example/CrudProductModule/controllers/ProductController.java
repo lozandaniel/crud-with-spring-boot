@@ -1,6 +1,7 @@
 package com.example.CrudProductModule.controllers;
 
 import com.example.CrudProductModule.models.Product;
+import com.example.CrudProductModule.models.Provider;
 import com.example.CrudProductModule.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,6 +30,8 @@ public class ProductController {
     public String formSaveProduct(Model model) {
         Product saveProduct = new Product();
         model.addAttribute("saveProduct", saveProduct);
+        List<Provider> getAllProviders = productService.getAllProviders();
+        model.addAttribute("providers", getAllProviders);
         return "form";
     }
 

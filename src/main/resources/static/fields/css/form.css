@@ -41,12 +41,23 @@ form {
 
 form > label {
     width:100%;
-    padding: 10px 15px;
-    margin-bottom: 5px;
+    padding: 10px;
     font-weight: 500;
     font-size:15px;
     display:flex;
     flex-direction:column;
+}
+
+select {
+    padding: 10px 12px;
+}
+
+textarea {
+    font-family: "DM Sans", sans-serif;
+    field-sizing: content;
+    resize: none;
+    padding: 10px 12px;
+    border-radius: 3px;
 }
 
 input {

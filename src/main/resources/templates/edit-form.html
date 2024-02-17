@@ -17,6 +17,11 @@
         <label>ID:
             <input type="text" name="id" th:value="${product.id}" readonly style="background:#888; font-weight: 700;">
         </label>
+        <label>Name provider:
+            <select id="provider" name="provider.id">
+                <option th:text="${product.provider.name}" th:value="${product.provider.id}"></option>
+            </select>
+        </label>
         <label for="name">Name:
             <input type="text" name="name" id="name" th:value="${product.name}" placeholder="Name" required>
         </label>

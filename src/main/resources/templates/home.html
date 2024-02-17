@@ -16,6 +16,7 @@
             <thead>
             <tr>
                 <th>Id</th>
+                <th>Provider</th>
                 <th>Name</th>
                 <th>Description</th>
                 <th>Category</th>
@@ -28,6 +29,7 @@
             <tbody>
             <tr th:each="product : ${allProducts}">
                 <td th:text="${product.id}"></td>
+                <td th:text="${product.provider.name}"></td>
                 <td th:text="${product.name}" style="font-weight:700;"></td>
                 <td th:text="${product.description}"></td>
                 <td th:text="${product.category}"></td>
@@ -36,13 +38,13 @@
                 <td>
                     <form th:action="@{'/products/' + ${product.id}}" method="post">
                         <button type="submit" style="border: none; background: none; padding: 0; cursor:pointer;">
-                            <img src="/fields/icon-delete.svg" alt="Delete">
+                            <img src="/fields/icon-delete.svg" alt="Delete product">
                         </button>
                     </form>
                 </td>
                 <td>
                     <a th:href="@{'/products/edit/' + ${product.id}}">
-                        <img src="/fields/icon-edit.svg" alt="Edit">
+                        <img src="/fields/icon-edit.svg" alt="Edit product">
                     </a>
                 </td>
             </tr>

@@ -5,12 +5,16 @@ import jakarta.persistence.*;
 
 // MODELO DE LA BASE DE DATOS TABLA DE "PRODUCT"
 @Entity
-@Table(name = "product")
+@Table(name = "products")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id_product")
     private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "id_provider")
+    private Provider provider;
 
     @Column(name = "name")
     private String name;
@@ -29,8 +33,9 @@ public class Product {
     public Product() {
     }
 
-    public Product(Long id, String name, String description, String category, int quantity, int price) {
+    public Product(Long id, Provider provider, String name, String description, String category, int quantity, int price) {
         this.id = id;
+        this.provider = provider;
         this.name = name;
         this.description = description;
         this.category = category;
@@ -44,6 +49,14 @@ public class Product {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Provider getProvider() {
+        return provider;
+    }
+
+    public void setProvider(Provider provider) {
+        this.provider = provider;
     }
 
     public String getName() {
