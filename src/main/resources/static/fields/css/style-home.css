@@ -11,13 +11,12 @@ body {
 
 header {
     text-align:center;
-    padding:20px;
 }
 
 a {
     text-transform: none;
     font-weight: 700;
-    color: #3498db;
+    color: #0070F0;
 }
 
 a:hover {
@@ -43,7 +42,7 @@ tr {
 }
 
 th {
-    background-color: #3498db;
+    background-color: #0070F0;
 }
 
 tr:nth-child(even) {
@@ -52,4 +51,9 @@ tr:nth-child(even) {
 
 tr:nth-child(odd) {
     background-color: #34495e;
+}
+
+.container-icon{
+    display:flex;
+    justify-content: center;
 }

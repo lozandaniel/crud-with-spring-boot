@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Guardar tu producto</title>
+    <link rel="stylesheet" href="/fields/css/form.css">
+    <style>
+        .error {
+            color: #ff0000;
+            text-transform: capitalize;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Agrega tus productos</h1>
+    <p>Lista de productos <a href="/products">Aquí</a></p>
+</header>
+
+<main>
+    <form action="/products/add" method="post" th:object="${product}">
+        <label for="name">Nombre:
+            <input type="text" id="name" th:field="*{name}" placeholder="Name">
+            <span class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+        </label>
+        <label>Nombre del proveedor:
+            <select id="provider" name="provider.id">
+                <option th:each="provider : ${providers}" th:text="${provider.name}" th:value="${provider.id}"></option>
+            </select>
+        </label>
+        <label for="description">Descripción:
+            <textarea rows="5" id="description" th:field="*{description}" placeholder="Escribe una descripción detallada..."></textarea>
+            <span class="error" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
+        </label>
+        <label for="category">Categoria:
+            <input type="text" id="category" th:field="*{category}" placeholder="Categoria del producto">
+            <span class="error" th:if="${#fields.hasErrors('category')}" th:errors="*{category}"></span>
+        </label>
+        <label for="quantity">Cantidad:
+            <input type="number" id="quantity" th:field="*{quantity}">
+            <span class="error" th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}"></span>
+        </label>
+        <label for="price">Precio
+            <input type="number" id="price" th:field="*{price}" placeholder="Price">
+            <span class="error" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></span>
+        </label>
+        <button type="submit">Agregar Producto</button>
+    </form>
+</main>
+</body>
+</html>

@@ -8,7 +8,7 @@ body {
 
 header {
     text-align:center;
-    padding:20px;
+    padding: 10px;
 }
 
 header > h1 {
@@ -19,7 +19,7 @@ header > h1 {
 a {
     text-transform: none;
     font-weight: 700;
-    color: #3498db;
+    color: #0070F0;
 }
 
 a:hover {
@@ -69,7 +69,7 @@ input {
 button {
     width:100%;
     font-weight:700;
-    background-color: #3498db;
+    background-color: #0070F0;
     color: white;
     padding: 10px 20px;
     border: none;

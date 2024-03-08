@@ -2,13 +2,13 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>Inicio</title>
     <link rel="stylesheet" href="/fields/css/style-home.css">
 </head>
 <body>
     <header>
         <h1>Lista de productos</h1>
-        <p>Para agregar un producto <a href="/products/add">Click Aquí</a></p>
+        <p>Para agregar un nuevo producto <a href="/products/add">Click Aquí</a></p>
     </header>
 
     <main>
@@ -16,14 +16,14 @@
             <thead>
             <tr>
                 <th>Id</th>
-                <th>Provider</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Category</th>
-                <th>Quantity</th>
-                <th>Price</th>
-                <th>Delete</th>
-                <th>Edit</th>
+                <th>Proveedor</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Categoria</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+                <th>Eliminar</th>
+                <th>Editar</th>
             </tr>
             </thead>
             <tbody>
@@ -36,14 +36,14 @@
                 <td th:text="${product.quantity}"></td>
                 <td th:text="${product.price}"></td>
                 <td>
-                    <form th:action="@{'/products/' + ${product.id}}" method="post">
+                    <form class="container-icon" th:action="@{'/products/' + ${product.id}}" method="post">
                         <button type="submit" style="border: none; background: none; padding: 0; cursor:pointer;">
                             <img src="/fields/icon-delete.svg" alt="Delete product">
                         </button>
                     </form>
                 </td>
                 <td>
-                    <a th:href="@{'/products/edit/' + ${product.id}}">
+                    <a class="container-icon" th:href="@{'/products/edit/' + ${product.id}}">
                         <img src="/fields/icon-edit.svg" alt="Edit product">
                     </a>
                 </td>

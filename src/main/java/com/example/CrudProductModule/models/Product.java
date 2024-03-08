@@ -1,7 +1,7 @@
 package com.example.CrudProductModule.models;
 
 import jakarta.persistence.*;
-
+import jakarta.validation.constraints.*;
 
 // MODELO DE LA BASE DE DATOS TABLA DE "PRODUCT"
 @Entity
@@ -17,17 +17,23 @@ public class Product {
     private Provider provider;
 
     @Column(name = "name")
+    @NotBlank(message = "El campo no puede ser vacio")
     private String name;
+
     @Column(name = "description")
+    @NotBlank
     private String description;
 
     @Column(name = "category")
+    @NotBlank
     private String category;
 
     @Column(name = "quantity")
+    @Min(1)
     private int quantity;
 
     @Column(name = "price")
+    @Min(1000)
     private int price;
 
     public Product() {

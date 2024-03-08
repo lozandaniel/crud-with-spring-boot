@@ -3,9 +3,12 @@ package com.example.CrudProductModule.controllers;
 import com.example.CrudProductModule.models.Product;
 import com.example.CrudProductModule.models.Provider;
 import com.example.CrudProductModule.services.ProductService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,17 +31,27 @@ public class ProductController {
     // Obtener la vista del formulario para añadir un producto
     @GetMapping("/products/add")
     public String formSaveProduct(Model model) {
-        Product saveProduct = new Product();
-        model.addAttribute("saveProduct", saveProduct);
+        Product product = new Product();
+        model.addAttribute("product", product);
         List<Provider> getAllProviders = productService.getAllProviders();
         model.addAttribute("providers", getAllProviders);
-        return "form";
+
+        System.out.println("Contenido del modelo: " + model);
+
+        return "views/form";
     }
 
 
     // Se utiliza para manejar solicitudes POST a la ruta "/products/add"
     @PostMapping("/products/add")
-    public String saveProduct(Product product){
+    public String saveProduct(@Valid Product product, BindingResult bindingResult, Model model){
+        if (bindingResult.hasErrors()){
+            for (FieldError error : bindingResult.getFieldErrors()){
+                System.out.println(error);
+            }
+            model.addAttribute("providers", productService.getAllProviders());
+            return "views/form";
+        }
         productService.saveProduct(product);
         return "redirect:/products";
     }
